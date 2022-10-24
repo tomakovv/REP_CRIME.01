@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Crime.Application\Crime.Application.csproj" />
+    <ProjectReference Include="..\Crime.Persistance\Crime.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

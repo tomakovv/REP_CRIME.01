@@ -6,6 +6,9 @@ namespace Crime.Application.Services.Interfaces
 {
     public interface ICrimeEventsService
     {
-        Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsDtoAsync();
+        Task CreateNewCrimeEventAsync(CreateCrimeEventDto newCrimeEventDto);
+
+        Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsAsync();
+        Task<CrimeEventDto> GetCrimeEventAsync(string objectId);
     }
 }

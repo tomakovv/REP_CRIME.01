@@ -1,11 +1,12 @@
-﻿using Crime.Persistence.MongoConfiguration;
+﻿using Crime.Application.Interfaces;
+using Crime.Persistence.MongoConfiguration;
 using Crime.Persistence.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Crime.Persistence
 {
-    public static class PersistanceRegistration
+    public static class PersistenceRegistration
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
@@ -13,7 +14,7 @@ namespace Crime.Persistence
             configuration.Bind(config);
             var crimeContext = new CrimeContext(config.MongoDB);
             var repo = new CrimeEventsRepository(crimeContext);
-            services.AddSingleton<CrimeEventsRepository>(repo);
+            services.AddSingleton<ICrimeEventsRepository>(repo);
             return services;
         }
     }

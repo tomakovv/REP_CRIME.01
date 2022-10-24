@@ -22,13 +22,29 @@ namespace Crime.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsDtoAsync()
+        public async Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsAsync()
         {
             var crimeEvents = await _repository.GetCrimeEventsAsync();
             var mappedCrimeEvents = _mapper.Map<IEnumerable<CrimeEventDto>>(crimeEvents);
             if (mappedCrimeEvents == null)
                 throw new Exception("Crime events not found");
             return mappedCrimeEvents;
+        }
+
+        public async Task<CrimeEventDto> GetCrimeEventAsync(string objectId)
+        {
+            var crimeEvent = await _repository.GetCrimeEventAsync(objectId);
+            var mappedCrimeEvent = _mapper.Map<CrimeEventDto>(crimeEvent);
+            if (mappedCrimeEvent == null)
+                throw new Exception("Crime event not found");
+            return mappedCrimeEvent;
+        }
+
+        public async Task CreateNewCrimeEventAsync(CreateCrimeEventDto newCrimeEventDto)
+        {
+            var newCrimeEvent = _mapper.Map<CrimeEvent>(newCrimeEventDto);
+            var ev = newCrimeEvent with { Date = DateTime.Now, LawEnforcementId = 1 };
+            _repository.CreateCrimeEventAsync(ev);
         }
     }
 }

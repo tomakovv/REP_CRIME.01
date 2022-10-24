@@ -11,6 +11,6 @@ namespace Crime.Persistence.MongoConfiguration
         public string User { get; set; } = null!;
         public string Password { get; set; } = null!;
 
-        public string ConnectionString => $@"mongodb://{User}:{Password}@{Host}:{Port}";
+        public string ConnectionString => $@"mongodb://{User}:{Password}@{Host}:{Port}/";
     }
 }

@@ -10,7 +10,7 @@ namespace Crime.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddScoped<ICrimeEventsService, CrimeEventsService>();
+            services.AddTransient<ICrimeEventsService, CrimeEventsService>();
             return services;
         }
     }

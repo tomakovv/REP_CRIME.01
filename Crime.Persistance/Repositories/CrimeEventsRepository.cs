@@ -1,6 +1,7 @@
 ﻿using Crime.Application.Interfaces;
 using Crime.Domain.Entities;
 using Crime.Persistence.Interfaces;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Crime.Persistence.Repositories
@@ -16,10 +17,9 @@ namespace Crime.Persistence.Repositories
 
         public async Task<IEnumerable<CrimeEvent>> GetCrimeEventsAsync() => await _context.Crimes.Find(_ => true).ToListAsync();
 
-        public async Task<CrimeEvent> GetCrimeEventAsync(int id)
+        public async Task<CrimeEvent> GetCrimeEventAsync(string objectId)
         {
-            FilterDefinition<CrimeEvent> filter = Builders<CrimeEvent>.Filter.Eq(m => m.Id, id);
-
+            FilterDefinition<CrimeEvent> filter = Builders<CrimeEvent>.Filter.Eq(m => m.InternalId, new ObjectId(objectId));
             return await _context.Crimes.Find(filter).FirstOrDefaultAsync();
         }
 

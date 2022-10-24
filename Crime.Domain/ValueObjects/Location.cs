@@ -4,14 +4,15 @@ namespace Crime.Domain.ValueObjects
 {
     public record Location
     {
-        public string City { get; }
-        public string Street { get; }
-        public string ZipCode { get; }
+        public string City { get; init; }
+        public string Street { get; init; }
+        public string ZipCode { get; init; }
 
-        private Location(string City, string street, string zipCode)
+        private Location(string city, string street, string zipCode)
         {
             Street = street;
             ZipCode = zipCode;
+            City = city;
         }
 
         public static Location Create(string city, string street, string zipCode)

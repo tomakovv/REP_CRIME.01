@@ -4,7 +4,9 @@ namespace Crime.Application.Interfaces
 {
     public interface ICrimeEventsRepository
     {
-        Task<CrimeEvent> GetCrimeEventAsync(int id);
+        Task CreateCrimeEventAsync(CrimeEvent crimeEvent);
+
+        Task<CrimeEvent> GetCrimeEventAsync(string id);
 
         Task<IEnumerable<CrimeEvent>> GetCrimeEventsAsync();
     }
