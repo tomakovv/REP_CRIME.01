@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Persistence", "Crime.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Application", "Crime.Application\Crime.Application.csproj", "{CDBE76E7-D9C4-400D-9261-39593663D3FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REP_CRIME.01.Common", "src\LawEnforcementAPI\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj", "{B95944FA-6731-4A8A-83B2-013A28C2A64F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{CDBE76E7-D9C4-400D-9261-39593663D3FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDBE76E7-D9C4-400D-9261-39593663D3FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDBE76E7-D9C4-400D-9261-39593663D3FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95944FA-6731-4A8A-83B2-013A28C2A64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95944FA-6731-4A8A-83B2-013A28C2A64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95944FA-6731-4A8A-83B2-013A28C2A64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95944FA-6731-4A8A-83B2-013A28C2A64F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

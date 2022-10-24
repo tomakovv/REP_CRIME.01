@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["CrimeAPI/CrimeAPI.csproj", "CrimeAPI/"]
-RUN dotnet restore "CrimeAPI/CrimeAPI.csproj"
+COPY ["CrimeAPI/Crime.API.csproj", "CrimeAPI/"]
+RUN dotnet restore "CrimeAPI/Crime.API.csproj"
 COPY . .
 WORKDIR "/src/CrimeAPI"
-RUN dotnet build "CrimeAPI.csproj" -c Release -o /app/build
+RUN dotnet build "Crime.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CrimeAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Crime.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CrimeAPI.dll"]
+ENTRYPOINT ["dotnet", "Crime.API.dll"]

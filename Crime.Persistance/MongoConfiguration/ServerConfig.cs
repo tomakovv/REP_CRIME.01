@@ -1,6 +1,4 @@
-﻿using Crime.Persistence.MongoConfiguration;
-
-namespace Crime.Persistence.MongoConfiguration
+﻿namespace Crime.Persistence.MongoConfiguration
 {
     public class ServerConfig
     {

@@ -21,5 +21,7 @@ namespace Crime.Domain.ValueObjects
                 return new Location(city, street, zipCode);
             throw new ArgumentException("Invalid zip code");
         }
+
+        public override string? ToString() => $"{Street} {City} {ZipCode}";
     }
 }
