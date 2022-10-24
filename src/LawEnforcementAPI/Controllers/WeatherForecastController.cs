@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CrimeAPI.Controllers
+namespace LawEnforcementAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
