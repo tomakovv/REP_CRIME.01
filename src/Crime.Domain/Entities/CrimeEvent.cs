@@ -10,6 +10,7 @@ namespace Crime.Domain.Entities
     {
         [BsonId]
         public ObjectId InternalId { get; init; }
+        public Guid Id { get; init; }
         public DateTime Date { get; init; }
         public MurderEventType Type { get; init; }
         public string Description { get; init; }

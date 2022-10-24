@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crime.API", "src\CrimeAPI\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REP_CRIME.01.Common", "src\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj", "{544D0AE7-12BF-4457-B75B-B46F01894289}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawEnforcement.Application", "src\LawEnforcement.Application\LawEnforcement.Application.csproj", "{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{544D0AE7-12BF-4457-B75B-B46F01894289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{544D0AE7-12BF-4457-B75B-B46F01894289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{544D0AE7-12BF-4457-B75B-B46F01894289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{85D144C5-8B38-401B-A279-9074F97D6184} = {21EBA09C-E110-48DC-9E09-FE1E92913A5B}
 		{B258B8BC-C27C-4491-A60B-4AC1B764BC07} = {21EBA09C-E110-48DC-9E09-FE1E92913A5B}
 		{A9C2543A-01C0-4754-97CE-BA399879A769} = {21EBA09C-E110-48DC-9E09-FE1E92913A5B}
+		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716} = {152CBFAA-F977-43F9-B48B-52DC0DDB392D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F731243-4D24-4788-B6DA-79724C2C6196}

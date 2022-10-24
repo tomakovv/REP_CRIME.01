@@ -38,7 +38,7 @@ namespace Crime.Application.Services
         public async Task CreateNewCrimeEventAsync(CreateCrimeEventDto newCrimeEventDto)
         {
             var newCrimeEvent = _mapper.Map<CrimeEvent>(newCrimeEventDto);
-            var ev = newCrimeEvent with { Date = DateTime.Now, LawEnforcementId = 1 };
+            var ev = newCrimeEvent with { Date = DateTime.Now, Id = new Guid(), LawEnforcementId = 1 };
             await _repository.CreateCrimeEventAsync(ev);
         }
     }
