@@ -1,4 +1,6 @@
-﻿namespace Crime.Persistance.MongoConfiguration
+﻿using Microsoft.Extensions.Configuration;
+
+namespace Crime.Persistence.MongoConfiguration
 {
     public class MongoDBSettings
     {
@@ -9,9 +11,6 @@
         public string User { get; set; } = null!;
         public string Password { get; set; } = null!;
 
-        public string ConnectionString
-        {
-            get => $@"mongodb://{User}:{Password}@{Host}:{Port}";
-        }
+        public string ConnectionString => $@"mongodb://{User}:{Password}@{Host}:{Port}";
     }
 }

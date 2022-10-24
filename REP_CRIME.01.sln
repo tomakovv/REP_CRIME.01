@@ -19,7 +19,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Domain", "Crime.Domain\Crime.Domain.csproj", "{03A8B117-1DCC-4E09-BC6A-305374E6B192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Persistance", "Crime.Persistance\Crime.Persistance.csproj", "{0A9DEB73-BCA9-4EF9-98FC-C45AD39BD121}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Persistence", "Crime.Persistance\Crime.Persistence.csproj", "{0A9DEB73-BCA9-4EF9-98FC-C45AD39BD121}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crime.Application", "Crime.Application\Crime.Application.csproj", "{CDBE76E7-D9C4-400D-9261-39593663D3FC}"
 EndProject
