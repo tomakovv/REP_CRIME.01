@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Crime.Domain\Crime.Domain.csproj" />
-    <ProjectReference Include="..\src\LawEnforcementAPI\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj" />
+    <ProjectReference Include="..\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,11 +3,6 @@ using Crime.Application.Interfaces;
 using Crime.Application.Services.Interfaces;
 using Crime.Domain.Entities;
 using REP_CRIME._01.Common.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Crime.Application.Services
 {
@@ -44,7 +39,7 @@ namespace Crime.Application.Services
         {
             var newCrimeEvent = _mapper.Map<CrimeEvent>(newCrimeEventDto);
             var ev = newCrimeEvent with { Date = DateTime.Now, LawEnforcementId = 1 };
-            _repository.CreateCrimeEventAsync(ev);
+            await _repository.CreateCrimeEventAsync(ev);
         }
     }
 }

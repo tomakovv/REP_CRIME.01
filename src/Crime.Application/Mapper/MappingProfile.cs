@@ -3,7 +3,7 @@ using Crime.Domain.Entities;
 using Crime.Domain.Entities.Enums;
 using Crime.Domain.ValueObjects;
 using REP_CRIME._01.Common.Dto;
-using REP_CRIME._01.Common.Utils;
+using REP_CRIME._01.Common.Helpers;
 
 namespace Crime.Application.Mapper
 {

@@ -1,4 +1,4 @@
-﻿namespace REP_CRIME._01.Common.Utils
+﻿namespace REP_CRIME._01.Common.Helpers
 {
     public static class EnumParser
     {
