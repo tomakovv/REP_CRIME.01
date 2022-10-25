@@ -20,6 +20,8 @@ namespace Crime.Application.Mapper
                 .ForMember(dest => dest.Location, opt => opt.MapFrom(s => Location.Create(s.City, s.Street, s.ZipCode)))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(s => EnumParser.ParseEnum<MurderEventType>(s.Type)))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(s => CrimeStatus.Waiting));
+
+            CreateMap<CreateCrimeEventDto, CrimeEventDto>();
         }
     }
 }

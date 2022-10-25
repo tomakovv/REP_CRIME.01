@@ -17,12 +17,14 @@ namespace Crime.Persistence.Repositories
 
         public async Task<IEnumerable<CrimeEvent>> GetCrimeEventsAsync() => await _context.Crimes.Find(_ => true).ToListAsync();
 
-        public async Task<CrimeEvent> GetCrimeEventAsync(string objectId)
+        public async Task<CrimeEvent> GetCrimeEventAsync(Guid id)
         {
-            FilterDefinition<CrimeEvent> filter = Builders<CrimeEvent>.Filter.Eq(m => m.InternalId, new ObjectId(objectId));
+            FilterDefinition<CrimeEvent> filter = Builders<CrimeEvent>.Filter.Eq(m => m.EventId, id);
             return await _context.Crimes.Find(filter).FirstOrDefaultAsync();
         }
 
         public async Task CreateCrimeEventAsync(CrimeEvent crimeEvent) => await _context.Crimes.InsertOneAsync(crimeEvent);
+
+        public async Task UpdateCrimeEventAsync(CrimeEvent crimeEvent) => await _context.Crimes.ReplaceOneAsync(filter: g => g.EventId == crimeEvent.EventId, replacement: crimeEvent);
     }
 }

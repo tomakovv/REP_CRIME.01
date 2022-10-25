@@ -6,8 +6,10 @@ namespace Crime.Application.Interfaces
     {
         Task CreateCrimeEventAsync(CrimeEvent crimeEvent);
 
-        Task<CrimeEvent> GetCrimeEventAsync(string id);
+        Task<CrimeEvent> GetCrimeEventAsync(Guid crimeId);
 
         Task<IEnumerable<CrimeEvent>> GetCrimeEventsAsync();
+
+        Task UpdateCrimeEventAsync(CrimeEvent crimeEvent);
     }
 }

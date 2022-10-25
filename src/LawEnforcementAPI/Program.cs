@@ -1,4 +1,6 @@
 using LawEnforcement.Application;
+using LawEnforcement.Application.LawEnforcement.Messaging.Receive;
+using LawEnforcement.Application.LawEnforcement.Messaging.Send;
 using LawEnforcement.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddTransient<ICrimeEventAssignmentResultSender, CrimeEventAssignmentResultSender>();
+builder.Services.AddHostedService<CrimeEventReceiver>();
 
 var app = builder.Build();
 

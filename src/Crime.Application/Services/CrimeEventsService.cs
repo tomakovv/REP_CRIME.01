@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Crime.Application.Crime.Messaging.Receive;
+using Crime.Application.Crime.Messaging_Send;
 using Crime.Application.Interfaces;
 using Crime.Application.Services.Interfaces;
 using Crime.Domain.Entities;
@@ -10,11 +12,13 @@ namespace Crime.Application.Services
     {
         private readonly ICrimeEventsRepository _repository;
         private readonly IMapper _mapper;
+        private readonly ICrimeEventSender _crimeEventSender;
 
-        public CrimeEventsService(ICrimeEventsRepository repository, IMapper mapper)
+        public CrimeEventsService(ICrimeEventsRepository repository, IMapper mapper, ICrimeEventSender crimeEventSender)
         {
             _repository = repository;
             _mapper = mapper;
+            _crimeEventSender = crimeEventSender;
         }
 
         public async Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsAsync()
@@ -26,9 +30,9 @@ namespace Crime.Application.Services
             return mappedCrimeEvents;
         }
 
-        public async Task<CrimeEventDto> GetCrimeEventAsync(string objectId)
+        public async Task<CrimeEventDto> GetCrimeEventAsync(Guid eventId)
         {
-            var crimeEvent = await _repository.GetCrimeEventAsync(objectId);
+            var crimeEvent = await _repository.GetCrimeEventAsync(eventId);
             var mappedCrimeEvent = _mapper.Map<CrimeEventDto>(crimeEvent);
             if (mappedCrimeEvent == null)
                 throw new Exception("Crime event not found");
@@ -37,9 +41,18 @@ namespace Crime.Application.Services
 
         public async Task CreateNewCrimeEventAsync(CreateCrimeEventDto newCrimeEventDto)
         {
-            var newCrimeEvent = _mapper.Map<CrimeEvent>(newCrimeEventDto);
-            var ev = newCrimeEvent with { Date = DateTime.Now, Id = new Guid(), LawEnforcementId = 1 };
-            await _repository.CreateCrimeEventAsync(ev);
+            var newCrimeEventMapped = _mapper.Map<CrimeEvent>(newCrimeEventDto);
+            var crimeEventToAdd = newCrimeEventMapped with { Date = DateTime.Now, EventId = Guid.NewGuid() };
+            var r = _mapper.Map<CrimeEventDto>(crimeEventToAdd);
+            _crimeEventSender.SendCrimeEvent(r);
+            await _repository.CreateCrimeEventAsync(crimeEventToAdd);
+        }
+
+        public async Task AssignLawEnforcementToCrimeEvent(Guid crimeId, int EnforcementId)
+        {
+            var crimeEvent = await _repository.GetCrimeEventAsync(crimeId);
+            var crimeEventToAdd = crimeEvent with { LawEnforcementId = EnforcementId };
+            await _repository.UpdateCrimeEventAsync(crimeEventToAdd);
         }
     }
 }

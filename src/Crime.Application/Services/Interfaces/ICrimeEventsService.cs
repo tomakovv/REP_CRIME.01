@@ -4,10 +4,12 @@ namespace Crime.Application.Services.Interfaces
 {
     public interface ICrimeEventsService
     {
+        Task AssignLawEnforcementToCrimeEvent(Guid crimeId, int EnforcementId);
+
         Task CreateNewCrimeEventAsync(CreateCrimeEventDto newCrimeEventDto);
 
         Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsAsync();
 
-        Task<CrimeEventDto> GetCrimeEventAsync(string objectId);
+        Task<CrimeEventDto> GetCrimeEventAsync(Guid eventId);
     }
 }

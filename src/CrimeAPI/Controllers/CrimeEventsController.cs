@@ -21,7 +21,7 @@ namespace Crime.API.Controllers
         public async Task<IActionResult> GetAllCrimeEvents() => Ok(await _crimeEventsService.GetAllCrimeEventsAsync());
 
         [HttpGet("id")]
-        public async Task<IActionResult> GetCrimeEvent([FromQuery] string crimeEventId) => Ok(await _crimeEventsService.GetCrimeEventAsync(crimeEventId));
+        public async Task<IActionResult> GetCrimeEvent([FromQuery] Guid crimeEventId) => Ok(await _crimeEventsService.GetCrimeEventAsync(crimeEventId));
 
         [HttpPost]
         public async Task<IActionResult> CreateCrimeEvent(CreateCrimeEventDto createCrimeEventDto)
