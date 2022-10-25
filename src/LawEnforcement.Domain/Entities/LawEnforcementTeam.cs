@@ -11,6 +11,6 @@ namespace LawEnforcement.Domain.Entities
 
         public Rank Rank { get; set; }
 
-        public IEnumerable<Event> CrimeEvents { get; set; }
+        public IEnumerable<Event> CrimeEvents { get; set; } = new List<Event>();
     }
 }

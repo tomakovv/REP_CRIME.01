@@ -14,7 +14,7 @@ namespace LawEnforcement.Persistence.Repositories
             _context = lawEnforcementContext;
         }
 
-        public async Task<IEnumerable<LawEnforcementTeam>> GetLawEnforcementTeamsAsync() => await _context.LawEnforcementTeams.ToListAsync();
+        public async Task<IEnumerable<LawEnforcementTeam>> GetLawEnforcementTeamsAsync() => await _context.LawEnforcementTeams.Include(l => l.CrimeEvents).ToListAsync();
 
         public async Task AddNewLawEnforcementTeamAsync(LawEnforcementTeam lawEnforcementTeam)
         {
@@ -24,7 +24,7 @@ namespace LawEnforcement.Persistence.Repositories
 
         public async Task<LawEnforcementTeam> AddCrimeEventToLawEnforcementTeamAsync(LawEnforcementTeam lawEnforcementTeam, Guid crimeEventId)
         {
-            lawEnforcementTeam.CrimeEvents.Append(new Event { CrimeEventId = crimeEventId });
+            await _context.Events.AddAsync(new Event { CrimeEventId = crimeEventId, LawEnforcementTeamId = lawEnforcementTeam.Id });
             await _context.SaveChangesAsync();
             return lawEnforcementTeam;
         }

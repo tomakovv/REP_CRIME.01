@@ -33,14 +33,14 @@ namespace LawEnforcement.Persistence.Migrations
                     b.Property<Guid>("CrimeEventId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("LawEnforcementTeamId")
+                    b.Property<int>("LawEnforcementTeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("LawEnforcementTeamId");
 
-                    b.ToTable("Event");
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("LawEnforcement.Domain.Entities.LawEnforcementTeam", b =>
@@ -67,7 +67,9 @@ namespace LawEnforcement.Persistence.Migrations
                 {
                     b.HasOne("LawEnforcement.Domain.Entities.LawEnforcementTeam", null)
                         .WithMany("CrimeEvents")
-                        .HasForeignKey("LawEnforcementTeamId");
+                        .HasForeignKey("LawEnforcementTeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("LawEnforcement.Domain.Entities.LawEnforcementTeam", b =>

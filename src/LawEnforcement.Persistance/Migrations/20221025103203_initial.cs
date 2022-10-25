@@ -24,34 +24,35 @@ namespace LawEnforcement.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Event",
+                name: "Events",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CrimeEventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LawEnforcementTeamId = table.Column<int>(type: "int", nullable: true)
+                    LawEnforcementTeamId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Event", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Event_LawEnforcementTeams_LawEnforcementTeamId",
+                        name: "FK_Events_LawEnforcementTeams_LawEnforcementTeamId",
                         column: x => x.LawEnforcementTeamId,
                         principalTable: "LawEnforcementTeams",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Event_LawEnforcementTeamId",
-                table: "Event",
+                name: "IX_Events_LawEnforcementTeamId",
+                table: "Events",
                 column: "LawEnforcementTeamId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Event");
+                name: "Events");
 
             migrationBuilder.DropTable(
                 name: "LawEnforcementTeams");

@@ -11,7 +11,7 @@ namespace LawEnforcement.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<LawEnforcementContext>(options =>
-            options.UseSqlServer("sd"));
+            options.UseSqlServer("Server=db;Database=Hospitality.Examinations;User=sa;Password=1Secure*Password1;TrustServerCertificate=true"));
             services.AddTransient<ILawEnforcementTeamRepository, LawEnforcementTeamRepository>();
             return services;
         }

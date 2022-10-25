@@ -1,5 +1,6 @@
 using LawEnforcement.Application;
 using LawEnforcement.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<LawEnforcementContext>();
+    context.Database.Migrate();
 }
 
 app.UseHttpsRedirection();
