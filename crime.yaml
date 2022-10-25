@@ -21,7 +21,7 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: RABBITMQ_URL
+        - name: CRIME_RABBITMQ_URL
           valueFrom:
             configMapKeyRef:
               name: configuration
@@ -42,11 +42,10 @@ kind: Service
 metadata:
   name: crime-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: crime
   ports:
     - protocol: TCP
-      port: 80
+      port: 8080
       targetPort: 80
-      nodePort: 30007

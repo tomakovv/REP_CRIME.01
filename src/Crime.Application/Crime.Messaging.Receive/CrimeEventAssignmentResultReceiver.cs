@@ -45,7 +45,7 @@ namespace Crime.Application.Crime.Messaging.Receive
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq-repcrime"//_configuration["RABBITMQ_URL"]
+                    HostName = "rabbitmq-repcrime"
                 };
                 _connection = factory.CreateConnection();
                 _channel = _connection.CreateModel();

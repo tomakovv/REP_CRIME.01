@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using REP_CRIME._01.Common.Exceptions;
 using System.Net;
 
@@ -17,17 +18,19 @@ namespace REP_CRIME._01.Common.Middlewares
             {
                 await HandleExceptionAsync(context, argumentException, HttpStatusCode.BadRequest).ConfigureAwait(false);
             }
-            catch (Exception exception)
-            {
-                await HandleExceptionAsync(context, exception, HttpStatusCode.InternalServerError).ConfigureAwait(false);
-            }
         }
 
         private static Task HandleExceptionAsync(HttpContext context, Exception exception, HttpStatusCode statusCode)
         {
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)statusCode;
-            return context.Response.WriteAsync(exception.Message);
+            var response = JsonConvert.SerializeObject(
+                new
+                {
+                    exception.Message
+                });
+
+            return context.Response.WriteAsync(response);
         }
     }
 }

@@ -17,6 +17,7 @@ builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddTransient<ICrimeEventAssignmentResultSender, CrimeEventAssignmentResultSender>();
 builder.Services.AddHostedService<CrimeEventReceiver>();
+builder.Services.AddTransient<ExceptionHandlerMiddleware>();
 
 var app = builder.Build();
 
@@ -30,8 +31,6 @@ using (var scope = app.Services.CreateScope())
     context.Database.Migrate();
 }
 app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -15,22 +15,28 @@ spec:
         app: mongo
     spec:
       containers:
-      - name: mongo 
-        image: learningdiaries.azurecr.io/mongo:latest
+      - name: mongodb   
+        image: mongo:5.0
         ports:
         - containerPort: 27017
         env:
         - name: MONGO_INITDB_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
-              name: azure-secrets
+              name: secrets
               key: mongo-user
         - name: MONGO_INITDB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: azure-secrets
+              name: secrets
               key: mongo-pass
-       
+        volumeMounts:
+        - name: "mongo-data-dir"
+          mountPath: "/data/db"
+      volumes:
+      - name: "mongo-data-dir"
+        persistentVolumeClaim:
+          claimName: "pvc"
 
 
 ---
@@ -46,6 +52,5 @@ spec:
       port: 27017
       targetPort: 27017
   
-
 
 

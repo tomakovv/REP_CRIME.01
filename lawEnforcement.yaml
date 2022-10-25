@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lawEnforcement-deployment
+  name: law-enforcement-deployment
   labels:
     app: lawEnforcement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lawEnforcement
+      app: law-enforcement
   template:
     metadata:
       labels:
-        app: lawEnforcement
+        app: law-enforcement
     spec:
       containers:
-      - name: lawEnforcement
-        image: tomakovv/hospitality_examinations:latest
+      - name: law-enforcement
+        image: tomakovv/law_enforcement:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -26,19 +26,25 @@ spec:
             configMapKeyRef:
               name: configuration
               key: rabbitmq-url
-
+        volumeMounts:
+        - name: secrets
+          mountPath: /app/secrets
+          readOnly: true
+      volumes:
+      - name: secrets
+        secret:
+          secretName: secret-appsettings
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: lawEnforcement-service
+  name: law-enforcement-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
-    app: crime
+    app: law-enforcement
   ports:
     - protocol: TCP
-      port: 80
+      port: 9079
       targetPort: 80
-      nodePort: 30010

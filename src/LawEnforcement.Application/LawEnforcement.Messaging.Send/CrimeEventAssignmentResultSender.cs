@@ -40,7 +40,7 @@ namespace LawEnforcement.Application.LawEnforcement.Messaging.Send
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq-repcrime"
+                    HostName = _configuration["RABBITMQ_URL"]
                 };
                 _connection = factory.CreateConnection();
             }

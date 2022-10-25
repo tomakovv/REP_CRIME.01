@@ -41,7 +41,7 @@ namespace Crime.Application.Crime.Messaging_Send
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq-repcrime"//_configuration["RABBITMQ_URL"]
+                    HostName = "rabbitmq-repcrime"
                 };
                 _connection = factory.CreateConnection();
             }
