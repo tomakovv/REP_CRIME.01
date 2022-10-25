@@ -1,11 +1,18 @@
 version: '3.4'
 
 services:
-  crimeapi:
+  crime.api:
     image: ${DOCKER_REGISTRY-}crimeapi
     build:
       context: .
-      dockerfile: CrimeAPI/Dockerfile
+      dockerfile: src/CrimeAPI/Dockerfile
+
+  lawenforcement.api:
+    image: ${DOCKER_REGISTRY-}lawenforcementapi
+    build:
+      context: .
+      dockerfile: src/LawEnforcementAPI/Dockerfile
+
   mongo:
     image: mongo
     restart: always
@@ -25,3 +32,10 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
     depends_on:
       - mongo  
+  db:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+         - ACCEPT_EULA=Y
+         - MSSQL_SA_PASSWORD=1Secure*Password1
+    ports:
+        - 1433:1433  

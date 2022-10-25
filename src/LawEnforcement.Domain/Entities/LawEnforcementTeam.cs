@@ -7,10 +7,10 @@ namespace LawEnforcement.Domain.Entities
     {
         public int Id { get; init; }
 
-        public EnforcementNumber EnforcementNumber { get; init; }
+        public string EnforcementNumber { get; init; }
 
         public Rank Rank { get; set; }
 
-        public IEnumerable<Guid> CrimeEvents { get; set; }
+        public IEnumerable<Event> CrimeEvents { get; set; }
     }
 }

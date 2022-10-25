@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Crime", "Crime", "{21EBA09C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LawEnforcement", "LawEnforcement", "{152CBFAA-F977-43F9-B48B-52DC0DDB392D}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9C490868-4DDA-4917-BF96-FC61F598C0A3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawEnforcement.Persistence", "src\LawEnforcement.Persistance\LawEnforcement.Persistence.csproj", "{B954213C-0F8A-4D7C-895F-F1C8DF587360}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawEnforcement.Domain", "src\LawEnforcement.Domain\LawEnforcement.Domain.csproj", "{F0DF4819-A8C1-457F-8F67-D5CA829274F0}"
@@ -23,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crime.Application", "src\Cr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crime.API", "src\CrimeAPI\Crime.API.csproj", "{A9C2543A-01C0-4754-97CE-BA399879A769}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REP_CRIME.01.Common", "src\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj", "{544D0AE7-12BF-4457-B75B-B46F01894289}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REP_CRIME.01.Common", "src\REP_CRIME.01.Common\REP_CRIME.01.Common.csproj", "{544D0AE7-12BF-4457-B75B-B46F01894289}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawEnforcement.Application", "src\LawEnforcement.Application\LawEnforcement.Application.csproj", "{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawEnforcement.Application", "src\LawEnforcement.Application\LawEnforcement.Application.csproj", "{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A37D48E9-1772-44ED-A34E-B931990291AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		{47A8229C-CF54-49A4-B08A-84890A801D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47A8229C-CF54-49A4-B08A-84890A801D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47A8229C-CF54-49A4-B08A-84890A801D5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C490868-4DDA-4917-BF96-FC61F598C0A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C490868-4DDA-4917-BF96-FC61F598C0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C490868-4DDA-4917-BF96-FC61F598C0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C490868-4DDA-4917-BF96-FC61F598C0A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B954213C-0F8A-4D7C-895F-F1C8DF587360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B954213C-0F8A-4D7C-895F-F1C8DF587360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B954213C-0F8A-4D7C-895F-F1C8DF587360}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,6 +69,10 @@ Global
 		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2CCFBCE-6B2B-427D-9ADB-B913B9457716}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37D48E9-1772-44ED-A34E-B931990291AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37D48E9-1772-44ED-A34E-B931990291AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37D48E9-1772-44ED-A34E-B931990291AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37D48E9-1772-44ED-A34E-B931990291AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
