@@ -1,4 +1,5 @@
 ﻿using LawEnforcement.Application.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -14,13 +15,15 @@ namespace LawEnforcement.Application.LawEnforcement.Messaging.Receive
         private IConnection _connection;
         private IModel _channel;
         private readonly ILawEnforcementTeamService _lawEnforcementService;
+        private readonly IConfiguration _configuration;
 
-        public CrimeEventReceiver(IServiceScopeFactory scopeFactory, ILawEnforcementTeamService lawEnforcementService)
+        public CrimeEventReceiver(IServiceScopeFactory scopeFactory, ILawEnforcementTeamService lawEnforcementService, IConfiguration configuration)
         {
             CreateConnection();
             _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: "CrimeEventQueue", durable: false, exclusive: false, autoDelete: false, arguments: null);
             _lawEnforcementService = lawEnforcementService;
+            _configuration = configuration;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -43,7 +46,7 @@ namespace LawEnforcement.Application.LawEnforcement.Messaging.Receive
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq"
+                    HostName = "rabbitmq-repcrime"
                 };
                 _connection = factory.CreateConnection();
             }

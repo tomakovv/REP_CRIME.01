@@ -27,6 +27,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LawEnforcement.Application"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A37D48E9-1772-44ED-A34E-B931990291AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes", "Kubernetes", "{7FEACEC6-1517-4BB7-BD5E-CE5D1A4D7657}"
+	ProjectSection(SolutionItems) = preProject
+		appsettings.secrets.json = appsettings.secrets.json
+		configuration.yaml = configuration.yaml
+		crime.yaml = crime.yaml
+		lawEnforcement.yaml = lawEnforcement.yaml
+		mongo-express.yaml = mongo-express.yaml
+		mongo.yaml = mongo.yaml
+		mongo-pvc.yaml = mongo-pvc.yaml
+		mssql-data.yaml = mssql-data.yaml
+		mssql.yaml = mssql.yaml
+		rabbitmq.yaml = rabbitmq.yaml
+		secrets.yaml = secrets.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

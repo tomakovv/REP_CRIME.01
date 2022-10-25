@@ -1,4 +1,5 @@
 ﻿using Crime.Domain.Entities;
+using Microsoft.Extensions.Configuration;
 using RabbitMQ.Client;
 using REP_CRIME._01.Common.Dto;
 using System.Text;
@@ -8,10 +9,12 @@ namespace Crime.Application.Crime.Messaging_Send
     internal class CrimeEventSender : ICrimeEventSender
     {
         private IConnection _connection;
+        private readonly IConfiguration _configuration;
 
-        public CrimeEventSender()
+        public CrimeEventSender(IConfiguration configuration)
         {
             CreateConnection();
+            _configuration = configuration;
         }
 
         public void SendCrimeEvent(CrimeEventDto data)
@@ -38,7 +41,7 @@ namespace Crime.Application.Crime.Messaging_Send
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq"
+                    HostName = "rabbitmq-repcrime"//_configuration["RABBITMQ_URL"]
                 };
                 _connection = factory.CreateConnection();
             }

@@ -1,4 +1,5 @@
-﻿using RabbitMQ.Client;
+﻿using Microsoft.Extensions.Configuration;
+using RabbitMQ.Client;
 using REP_CRIME._01.Common.Dto;
 using System.Text;
 
@@ -7,10 +8,12 @@ namespace LawEnforcement.Application.LawEnforcement.Messaging.Send
     public class CrimeEventAssignmentResultSender : ICrimeEventAssignmentResultSender
     {
         private IConnection _connection;
+        private readonly IConfiguration _configuration;
 
-        public CrimeEventAssignmentResultSender()
+        public CrimeEventAssignmentResultSender(IConfiguration configuration)
         {
             CreateConnection();
+            _configuration = configuration;
         }
 
         public void SendCrimeEventAssignmentResult(AssignmentResult result)
@@ -37,7 +40,7 @@ namespace LawEnforcement.Application.LawEnforcement.Messaging.Send
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq"
+                    HostName = "rabbitmq-repcrime"
                 };
                 _connection = factory.CreateConnection();
             }

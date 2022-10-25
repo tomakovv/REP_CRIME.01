@@ -1,4 +1,5 @@
 ﻿using Crime.Application.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -14,12 +15,12 @@ namespace Crime.Application.Crime.Messaging.Receive
         private IConnection _connection;
         private IModel _channel;
         private readonly ICrimeEventsService _crimeEventsService;
-        public string Result { get; set; }
+        private readonly IConfiguration _configuration;
 
-        public CrimeEventAssignmentResultReceiver(ICrimeEventsService crimeEventsService)
+        public CrimeEventAssignmentResultReceiver(ICrimeEventsService crimeEventsService, IConfiguration configuration)
         {
+            _configuration = configuration;
             CreateConnection();
-            _channel = _connection.CreateModel();
             _channel.QueueDeclare(queue: "CrimeEventAssignmentQueue", durable: false, exclusive: false, autoDelete: false, arguments: null);
             _crimeEventsService = crimeEventsService;
         }
@@ -44,9 +45,10 @@ namespace Crime.Application.Crime.Messaging.Receive
             {
                 var factory = new ConnectionFactory
                 {
-                    HostName = "rabbitmq"
+                    HostName = "rabbitmq-repcrime"//_configuration["RABBITMQ_URL"]
                 };
                 _connection = factory.CreateConnection();
+                _channel = _connection.CreateModel();
             }
             catch (Exception ex)
             {

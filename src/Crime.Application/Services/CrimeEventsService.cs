@@ -5,6 +5,7 @@ using Crime.Application.Interfaces;
 using Crime.Application.Services.Interfaces;
 using Crime.Domain.Entities;
 using REP_CRIME._01.Common.Dto;
+using REP_CRIME._01.Common.Exceptions;
 
 namespace Crime.Application.Services
 {
@@ -26,7 +27,7 @@ namespace Crime.Application.Services
             var crimeEvents = await _repository.GetCrimeEventsAsync();
             var mappedCrimeEvents = _mapper.Map<IEnumerable<CrimeEventDto>>(crimeEvents);
             if (mappedCrimeEvents == null)
-                throw new Exception("Crime events not found");
+                throw new ResourceNotFoundException("Crime events not found");
             return mappedCrimeEvents;
         }
 
@@ -35,7 +36,7 @@ namespace Crime.Application.Services
             var crimeEvent = await _repository.GetCrimeEventAsync(eventId);
             var mappedCrimeEvent = _mapper.Map<CrimeEventDto>(crimeEvent);
             if (mappedCrimeEvent == null)
-                throw new Exception("Crime event not found");
+                throw new ResourceNotFoundException("Crime event not found");
             return mappedCrimeEvent;
         }
 
@@ -43,8 +44,8 @@ namespace Crime.Application.Services
         {
             var newCrimeEventMapped = _mapper.Map<CrimeEvent>(newCrimeEventDto);
             var crimeEventToAdd = newCrimeEventMapped with { Date = DateTime.Now, EventId = Guid.NewGuid() };
-            var r = _mapper.Map<CrimeEventDto>(crimeEventToAdd);
-            _crimeEventSender.SendCrimeEvent(r);
+            var eventToSend = _mapper.Map<CrimeEventDto>(crimeEventToAdd);
+            _crimeEventSender.SendCrimeEvent(eventToSend);
             await _repository.CreateCrimeEventAsync(crimeEventToAdd);
         }
 

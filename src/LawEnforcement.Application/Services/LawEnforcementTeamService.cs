@@ -1,6 +1,7 @@
 ﻿using LawEnforcement.Application.Interfaces;
 using LawEnforcement.Application.LawEnforcement.Messaging.Send;
 using REP_CRIME._01.Common.Dto;
+using REP_CRIME._01.Common.Exceptions;
 
 namespace LawEnforcement.Application.Services
 {
@@ -21,7 +22,7 @@ namespace LawEnforcement.Application.Services
 
             var availableTeam = allTeams.OrderBy(t => t.CrimeEvents.Count()).FirstOrDefault();
             if (availableTeam == null)
-                throw new Exception("Law Enforcement team not found");
+                throw new ResourceNotFoundException("Law Enforcement team not found");
 
             await _lawEnforcementTeamRepository.AddCrimeEventToLawEnforcementTeamAsync(availableTeam, crimeId);
             _crimeEventAssignmentResultSender.SendCrimeEventAssignmentResult(new AssignmentResult(availableTeam.Id, crimeId));
