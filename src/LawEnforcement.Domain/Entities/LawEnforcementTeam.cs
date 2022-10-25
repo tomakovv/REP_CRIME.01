@@ -3,7 +3,7 @@ using LawEnforcement.Domain.ValueObjects;
 
 namespace LawEnforcement.Domain.Entities
 {
-    public record LawEnforcement
+    public record LawEnforcementTeam
     {
         public int Id { get; init; }
 
