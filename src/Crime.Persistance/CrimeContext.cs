@@ -9,7 +9,9 @@ namespace Crime.Persistence
     {
         public CrimeContext(MongoDBSettings config)
         {
-            var client = new MongoClient("mongodb://mongouser:mongopassword@mongo-service:27017/");
+            //mongodb://mongouser:mongopassword@mongo-service:27017/
+            //mongodb://root:example@mongo:27017/
+            var client = new MongoClient("mongodb://root:example@mongo:27017/");
             _db = client.GetDatabase(config.DatabaseName);
         }
 

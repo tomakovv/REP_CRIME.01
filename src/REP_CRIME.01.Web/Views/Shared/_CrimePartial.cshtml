@@ -1,0 +1,24 @@
+﻿@model List<CrimeEventViewModel>
+
+@foreach (var item in Model)
+{
+ <div class="row mt-2">
+        <div class="col">
+        <div class="list-group list-group-mine ">
+            <a href="#" class="list-group-item list-group-item " aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="">@item.Description</h5>
+                    <small>
+                        @{
+                            var hours = (DateTime.Now - @item.Date).Minutes;
+                        }
+                        @hours minutes ago
+                    </small>
+                </div>
+                <p class="mb-1">reporter: @item.ReporterEmail</p>
+                <small>status: @item.Status</small>
+            </a>
+        </div>
+        </div>
+ </div>
+}

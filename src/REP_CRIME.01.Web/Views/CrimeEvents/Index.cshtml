@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    
+<div class="container  bg-color ">
+    <div class="row  ">
+        <div class="col-sm text-center gy-4">
+            <a asp-action="Create" class="btn btn-danger " role="button">Report incident</a>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm text-center gy-4">
+            <h3>Recently reported incidents </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            
+        </div>
+        <div class="col-6">
+            <partial name="_CrimePartial" />
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm text-center gy-4">
+            <h3>Statistics </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm gy-4 ">
+            <button type="button" class="btn btn-info">
+                Number of incidents reported today
+                 <span class="badge bg-secondary">4</span>
+            </button>
+        </div>
+    </div>
+
+

@@ -3,7 +3,7 @@ using Crime.Persistence;
 using REP_CRIME._01.Common.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddJsonFile("secrets/appsettings.secrets.json").AddEnvironmentVariables(prefix: "CRIME_");
+//builder.Configuration.AddJsonFile("secrets/appsettings.secrets.json").AddEnvironmentVariables(prefix: "CRIME_");
 builder.Services.AddControllers();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
@@ -17,7 +17,6 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 //app.UseMiddleware<ExceptionHandlerMiddleware>();
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>a37d48e9-1772-44ed-a34e-b931990291ad</ProjectGuid>
+    <ProjectGuid>63f630e3-7e81-46e5-b99a-ab346ee0c8f2</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>crime.api</DockerServiceName>

@@ -1,18 +1,41 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.btn {
+    font-size: 28px
+}
+
+.navbar {
+    background-color: #008ba3;
+}
+
+.footer {
+    background-color: #d7ffff;
+}
+
+.bg-color {
+    background-color: #a5d3d1;
+}
+
+.list-group-mine .list-group-item {
+    background-color: #d7ffff;
+    border-top: 1px solid #0091b5;
+    border-color: #b8e512;
+    border-radius: 20px;
 }

@@ -4,6 +4,7 @@ using Crime.Application.Crime.Messaging_Send;
 using Crime.Application.Interfaces;
 using Crime.Application.Services.Interfaces;
 using Crime.Domain.Entities;
+using Crime.Domain.Entities.Enums;
 using REP_CRIME._01.Common.Dto;
 using REP_CRIME._01.Common.Exceptions;
 
@@ -52,7 +53,7 @@ namespace Crime.Application.Services
         public async Task AssignLawEnforcementToCrimeEvent(Guid crimeId, int EnforcementId)
         {
             var crimeEvent = await _repository.GetCrimeEventAsync(crimeId);
-            var crimeEventToAdd = crimeEvent with { LawEnforcementId = EnforcementId };
+            var crimeEventToAdd = crimeEvent with { LawEnforcementId = EnforcementId, Status = CrimeStatus.Assigned };
             await _repository.UpdateCrimeEventAsync(crimeEventToAdd);
         }
     }

@@ -12,7 +12,7 @@ namespace Crime.Domain.Entities
         public ObjectId InternalId { get; init; }
         public Guid EventId { get; init; }
         public DateTime Date { get; init; }
-        public MurderEventType Type { get; init; }
+        public CrimeEventType Type { get; init; }
         public string Description { get; init; }
         public Location Location { get; init; }
         public MailAddress ReporterEmail { get; init; }

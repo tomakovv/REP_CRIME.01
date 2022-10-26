@@ -3,6 +3,7 @@
     public enum CrimeStatus
     {
         Waiting,
+        Assigned,
         Finished,
         Declined
     }

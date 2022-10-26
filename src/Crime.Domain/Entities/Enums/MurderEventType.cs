@@ -1,6 +1,6 @@
 ﻿namespace Crime.Domain.Entities.Enums
 {
-    public enum MurderEventType
+    public enum CrimeEventType
     {
         burglary,
         assault,

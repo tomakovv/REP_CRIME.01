@@ -1,17 +1,26 @@
 version: '3.4'
 
 services:
+
+  rep_crime.01.web:
+    image: ${DOCKER_REGISTRY-}repcrime01web
+    build:
+      context: .
+      dockerfile: src/REP_CRIME.01.Web/Dockerfile
+
   crime.api:
     image: ${DOCKER_REGISTRY-}crimeapi
     build:
       context: .
       dockerfile: src/CrimeAPI/Dockerfile
 
-  lawenforcement.api:
-    image: ${DOCKER_REGISTRY-}lawenforcementapi
-    build:
-      context: .
-      dockerfile: src/LawEnforcementAPI/Dockerfile
+  
+
+  #lawenforcement.api:
+  #  image: ${DOCKER_REGISTRY-}lawenforcementapi
+  #  build:
+  #    context: .
+  #    dockerfile: src/LawEnforcementAPI/Dockerfile
 
   mongo:
     image: mongo
@@ -32,14 +41,14 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
     depends_on:
       - mongo  
-  db:
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
-    environment:
-         - ACCEPT_EULA=Y
-         - MSSQL_SA_PASSWORD=1Secure*Password1
-    ports:
-        - 1433:1433  
-  rabbitmq: 
+  #db:
+  #  image: "mcr.microsoft.com/mssql/server:2022-latest"
+  #  environment:
+  #       - ACCEPT_EULA=Y
+  #       - MSSQL_SA_PASSWORD=1Secure*Password1
+  #  ports:
+  #      - 1433:1433  
+  rabbitmq-repcrime: 
     image: rabbitmq:3-management
     container_name: "rabbitmq"
     hostname: "rabbitmq"
@@ -56,3 +65,5 @@ services:
         interval: 30s
         timeout: 10s
         retries: 5
+
+
