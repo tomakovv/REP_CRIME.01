@@ -40,9 +40,14 @@
                 <textarea asp-for="City" class="form-control"></textarea>
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Type" class="Type"></label>
-                <textarea asp-for="Type" class="form-control"></textarea>
+             <div class="form-group">
+                <label asp-for="Type" class="City"></label>
+                <select asp-for="Type" >
+                    <option value="0">burglary</option>
+                    <option value="1">assault</option>
+                    <option value="2">murder</option>
+                    <option value="3">theft</option>
+                </select>
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
 
