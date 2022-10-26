@@ -56,5 +56,11 @@ namespace Crime.Application.Services
             var crimeEventToAdd = crimeEvent with { LawEnforcementId = EnforcementId, Status = CrimeStatus.Assigned };
             await _repository.UpdateCrimeEventAsync(crimeEventToAdd);
         }
+
+        public async Task<CrimeEventStats> GetCrimeEventsStats()
+        {
+            var totalCrimeEvents = (int)await _repository.GetNumberOfAllCrimeEventsAsync();
+            return new CrimeEventStats(1, totalCrimeEvents);
+        }
     }
 }

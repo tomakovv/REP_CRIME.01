@@ -11,5 +11,6 @@ namespace Crime.Application.Services.Interfaces
         Task<IEnumerable<CrimeEventDto>> GetAllCrimeEventsAsync();
 
         Task<CrimeEventDto> GetCrimeEventAsync(Guid eventId);
+        Task<CrimeEventStats> GetCrimeEventsStats();
     }
 }

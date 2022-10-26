@@ -26,5 +26,7 @@ namespace Crime.Persistence.Repositories
         public async Task CreateCrimeEventAsync(CrimeEvent crimeEvent) => await _context.Crimes.InsertOneAsync(crimeEvent);
 
         public async Task UpdateCrimeEventAsync(CrimeEvent crimeEvent) => await _context.Crimes.ReplaceOneAsync(filter: g => g.EventId == crimeEvent.EventId, replacement: crimeEvent);
+
+        public async Task<long> GetNumberOfAllCrimeEventsAsync() => await _context.Crimes.CountDocumentsAsync(new BsonDocument());
     }
 }

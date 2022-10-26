@@ -12,7 +12,7 @@ namespace Crime.Persistence
         {
             var config = new ServerConfig();
             configuration.Bind(config);
-            var crimeContext = new CrimeContext(config.MongoDB);
+            var crimeContext = new CrimeContext(config.MongoDB, configuration);
             var repo = new CrimeEventsRepository(crimeContext);
             services.AddSingleton<ICrimeEventsRepository>(repo);
             return services;

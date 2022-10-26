@@ -1,18 +1,20 @@
 ﻿using Crime.Domain.Entities;
 using Crime.Persistence.Interfaces;
 using Crime.Persistence.MongoConfiguration;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace Crime.Persistence
 {
     public class CrimeContext : ICrimeContext
     {
-        public CrimeContext(MongoDBSettings config)
+        private readonly IConfiguration configuration;
+
+        public CrimeContext(MongoDBSettings config, IConfiguration configuration)
         {
-            //mongodb://mongouser:mongopassword@mongo-service:27017/
-            //mongodb://root:example@mongo:27017/
-            var client = new MongoClient("mongodb://root:example@mongo:27017/");
+            var client = new MongoClient(configuration["MongoConnectionString"]);
             _db = client.GetDatabase(config.DatabaseName);
+            this.configuration = configuration;
         }
 
         private readonly IMongoDatabase _db;

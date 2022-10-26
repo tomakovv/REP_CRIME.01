@@ -18,10 +18,14 @@ namespace REP_CRIME._01.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var operationResult = await _httpClient.DoGetAsync<IEnumerable<CrimeEventViewModel>>("http://crime.api/api/CrimeEvents");
-            if (operationResult.Success)
+            var crimeEventsResult = await _httpClient.DoGetAsync<IEnumerable<CrimeEventViewModel>>("http://crime-service/api/CrimeEvents");
+            var crimeStatsResult = await _httpClient.DoGetAsync<CrimeEventStats>("http://crime-service/api/CrimeEvents/stats");
+
+            if (crimeEventsResult.Success && crimeStatsResult.Success)
             {
-                var crimes = operationResult.Data.OrderBy(s => s.Date).Take(10);
+                var crimes = crimeEventsResult.Data.OrderBy(s => s.Date).Take(10);
+                var crimeStats = crimeStatsResult.Data;
+                ViewBag.CrimeStats = crimeStats;
                 var vm = new List<CrimeEventViewModel>();
                 foreach (var crime in crimes)
                 {
@@ -33,7 +37,7 @@ namespace REP_CRIME._01.Web.Controllers
                         EventId = crime.EventId,
                         Location = crime.Location,
                         ReporterEmail = crime.ReporterEmail,
-                        Type = crime.Type
+                        Type = crime.Type,
                     });
                 }
                 return View(vm);
@@ -53,7 +57,7 @@ namespace REP_CRIME._01.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _httpClient.PostAsJsonAsync("http://crime.api/api/CrimeEvents", entry);
+                var result = await _httpClient.PostAsJsonAsync("http://crime-service/api/CrimeEvents", entry);
                 if (result.IsSuccessStatusCode)
                     return RedirectToAction(nameof(Index));
             }

@@ -38,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes", "Kubernetes", 
 		mssql.yaml = mssql.yaml
 		rabbitmq.yaml = rabbitmq.yaml
 		secrets.yaml = secrets.yaml
+		web-app.yaml = web-app.yaml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REP_CRIME.01.Web", "src\REP_CRIME.01.Web\REP_CRIME.01.Web.csproj", "{5BEAEF99-9A1A-4AFF-BEEC-71C7598C0F11}"

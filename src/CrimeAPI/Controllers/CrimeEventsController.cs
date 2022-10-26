@@ -1,6 +1,4 @@
-﻿using Crime.Application.Interfaces;
-using Crime.Application.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Crime.Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using REP_CRIME._01.Common.Dto;
 
@@ -29,5 +27,8 @@ namespace Crime.API.Controllers
             await _crimeEventsService.CreateNewCrimeEventAsync(createCrimeEventDto);
             return StatusCode(201);
         }
+
+        [HttpGet("stats")]
+        public async Task<IActionResult> GetDailyCrimeEventsCount() => Ok(await _crimeEventsService.GetCrimeEventsStats());
     }
 }

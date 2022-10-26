@@ -9,5 +9,7 @@
         public string Location { get; init; }
         public string Status { get; init; }
         public string ReporterEmail { get; init; }
+        public int TotalCrimeEvents { get; init; }
+        public int DailyCrimeEvents { get; init; }
     }
 }

@@ -41,10 +41,10 @@ kind: Service
 metadata:
   name: law-enforcement-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: law-enforcement
   ports:
     - protocol: TCP
-      port: 9079
+      port: 80
       targetPort: 80

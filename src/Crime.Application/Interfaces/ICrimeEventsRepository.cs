@@ -10,6 +10,8 @@ namespace Crime.Application.Interfaces
 
         Task<IEnumerable<CrimeEvent>> GetCrimeEventsAsync();
 
+        Task<long> GetNumberOfAllCrimeEventsAsync();
+
         Task UpdateCrimeEventAsync(CrimeEvent crimeEvent);
     }
 }

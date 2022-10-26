@@ -42,10 +42,10 @@ kind: Service
 metadata:
   name: crime-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: crime
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 80
